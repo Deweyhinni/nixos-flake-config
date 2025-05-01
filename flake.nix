@@ -17,6 +17,8 @@
 	config.allowUnfree = true;
       };
       lib = nixpkgs.lib;
+      desktopEnvironment = "gnome";
+      desktopModule = import ./desktops/${desktopEnvironment}.nix;
     in {
       nixosConfigurations = {
         deweyhinni-cosmic = lib.nixosSystem {
@@ -27,7 +29,7 @@
 	      home-manager.useUserPackages = true;
               home-manager.users.deweyhinni = import ./home.nix;
 	    }
-	    ./desktops/gnome.nix
+	    desktopModule;
 	  ];
 	};
       }; 

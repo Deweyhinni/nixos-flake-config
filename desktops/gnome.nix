@@ -7,4 +7,9 @@
       desktopManager.gnome.enable = true;
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    gnomeExtensions.pop-shell
+    gnome-tweaks
+  ];
 }
