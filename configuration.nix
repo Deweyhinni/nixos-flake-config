@@ -89,14 +89,24 @@
   #   enableSSHSupport = true;
   # };
 
-  programs.zsh.enable = true;
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
+  programs = {
+    zsh = {
+      enable = true;
+    };
+    git = {
+      enable = true;
+      userName = "deweyhinni";
+      userEmail = "deweyhinni@protonmail.com";
+      lfs.enable = true;
+    };
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
+    };
   };
+
 
   # List services that you want to enable:
 
