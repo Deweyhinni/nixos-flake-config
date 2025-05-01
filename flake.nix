@@ -17,11 +17,11 @@
 	config.allowUnfree = true;
       };
       lib = nixpkgs.lib;
-      desktopEnvironment = "gnome";
+      desktopEnvironment = "kde";
       desktopModule = import ./desktops/${desktopEnvironment}.nix;
     in {
       nixosConfigurations = {
-        deweyhinni-cosmic = lib.nixosSystem {
+        deweyhinni-nixos = lib.nixosSystem {
 	  inherit system;
 	  modules = [ ./configuration.nix
 	    home-manager.nixosModules.home-manager {
@@ -34,7 +34,7 @@
 	};
       }; 
       hmConfig = {
-        deweyhinni-cosmic = home-manager.lib.homeManagerConfiguration {
+        deweyhinni-nixos = home-manager.lib.homeManagerConfiguration {
 	  inherit pkgs;
           modules = [
 	    ./home.nix
