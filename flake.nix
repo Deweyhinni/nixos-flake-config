@@ -29,7 +29,7 @@
 	      home-manager.useUserPackages = true;
               home-manager.users.deweyhinni = import ./home.nix;
 	    }
-	    desktopModule;
+	    desktopModule
 	  ];
 	};
       }; 
