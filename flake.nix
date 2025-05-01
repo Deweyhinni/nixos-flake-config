@@ -27,7 +27,7 @@
 	      home-manager.useUserPackages = true;
               home-manager.users.deweyhinni = import ./home.nix;
 	    }
-	    ./desktops/cosmic.nix
+	    ./desktops/gnome.nix
 	  ];
 	};
       }; 
