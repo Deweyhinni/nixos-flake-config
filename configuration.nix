@@ -72,6 +72,7 @@
     git
     zsh
     discord
+    gcc
   ];
 
   services.flatpak.enable = true;

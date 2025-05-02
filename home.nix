@@ -56,6 +56,13 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    ".config/nvim".source = pkgs.fetchFromGitHub {
+      owner = "deweyhinni";
+      repo = "kickstart.nvim";
+      rev = "e053129";
+      sha256 = "gduD7tZP5TLZ82EPriX58ZWaPtA1D+ozWYZETM+hk+g=";
+    };
   };
 
   programs = {
