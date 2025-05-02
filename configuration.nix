@@ -95,8 +95,6 @@
     };
     git = {
       enable = true;
-      userName = "deweyhinni";
-      userEmail = "deweyhinni@protonmail.com";
       lfs.enable = true;
     };
     steam = {

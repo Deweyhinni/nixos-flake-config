@@ -58,20 +58,26 @@
     # '';
   };
 
-  programs.zsh = {
-    enable = true;
-    # enableCompletions = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
+  programs = {
+    zsh = {
+      enable = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
 
-    shellAliases = {
-      update = "sudo nixos-rebuild switch";
+      shellAliases = {
+        update = "sudo nixos-rebuild switch";
+      };
+
+      oh-my-zsh = {
+        enable = true;
+        plugins = [ "git" "rust" "vi-mode" "copyfile" ];
+        theme = "af-magic";
+      };
     };
 
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" "rust" "vi-mode" "copyfile" ];
-      theme = "af-magic";
+    git = {
+      userName = "deweyhinni";
+      userEmail = "deweyhinni@protonmail.com";
     };
   };
 

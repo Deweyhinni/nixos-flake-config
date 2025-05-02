@@ -17,7 +17,7 @@
 	config.allowUnfree = true;
       };
       lib = nixpkgs.lib;
-      desktopEnvironment = "kde";
+      desktopEnvironment = "cosmic";
       desktopModule = import ./desktops/${desktopEnvironment}.nix;
     in {
       nixosConfigurations = {
