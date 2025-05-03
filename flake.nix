@@ -13,7 +13,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim-config }:
+  outputs = { self, nixpkgs, home-manager, nixvim-config }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -32,6 +32,7 @@
 	      home-manager.useGlobalPkgs = true;
 	      home-manager.useUserPackages = true;
               home-manager.users.deweyhinni = import ./home.nix;
+	      home-manager.extraSpecialArgs = {inherit inputs system;};
 	    }
 	    desktopModule
 	  ];
