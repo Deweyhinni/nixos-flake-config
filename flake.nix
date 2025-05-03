@@ -7,9 +7,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim-config = {
+      url = "github:deweyhinni/nixvim-config";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager }:
+  outputs = { self, nixpkgs, home-manager, nixvim-config }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -31,6 +35,7 @@
 	    }
 	    desktopModule
 	  ];
+
 	};
       }; 
       hmConfig = {

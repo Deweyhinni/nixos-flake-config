@@ -27,6 +27,7 @@
     ripgrep
     steam
     gh
+    tree
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -41,6 +42,8 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+  ] ++ [
+    inputs.nixvim-config.packages.${system}.default
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -57,12 +60,13 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
 
-    ".config/nvim".source = pkgs.fetchFromGitHub {
-      owner = "deweyhinni";
-      repo = "kickstart.nvim";
-      rev = "e053129";
-      sha256 = "gduD7tZP5TLZ82EPriX58ZWaPtA1D+ozWYZETM+hk+g=";
-    };
+    # doesn't really work since mason breaks on nixos lmao
+    # ".config/nvim".source = pkgs.fetchFromGitHub {
+    #   owner = "deweyhinni";
+    #   repo = "kickstart.nvim";
+    #   rev = "e053129";
+    #   sha256 = "gduD7tZP5TLZ82EPriX58ZWaPtA1D+ozWYZETM+hk+g=";
+    # };
   };
 
   programs = {
@@ -87,6 +91,8 @@
       userEmail = "deweyhinni@protonmail.com";
     };
   };
+
+
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
