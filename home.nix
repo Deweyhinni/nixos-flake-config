@@ -28,6 +28,7 @@
     steam
     gh
     tree
+    rustup
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -76,7 +77,7 @@
       syntaxHighlighting.enable = true;
 
       shellAliases = {
-        update = "sudo nixos-rebuild switch";
+        update = "sudo nixos-rebuild switch --flake /home/deweyhinni/flake/#deweyhinni-nixos";
       };
 
       oh-my-zsh = {
