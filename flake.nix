@@ -21,7 +21,7 @@
 	config.allowUnfree = true;
       };
       lib = nixpkgs.lib;
-      desktopEnvironment = "cosmic";
+      desktopEnvironment = "sway";
       desktopModule = import ./desktops/${desktopEnvironment}.nix;
     in {
       nixosConfigurations = {
