@@ -10,10 +10,21 @@
       ./hardware-configuration.nix
     ];
 
+  /*
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/vda";
   boot.loader.grub.useOSProber = true;
+  */
+
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  # Use latest kernel.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  boot.initrd.luks.devices."luks-14d0c9f6-f237-4c37-95d1-2f0e0a034279".device = "/dev/disk/by-uuid/14d0c9f6-f237-4c37-95d1-2f0e0a034279";
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

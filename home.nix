@@ -38,12 +38,12 @@
     spotify
     ncspot
     discord
-    # kicad
-    # jellyfin-media-player
-    # prismlauncher
-    # jetbrains.idea-community-bin
-    # orca-slicer
-    # alrv
+    kicad
+    jellyfin-media-player
+    prismlauncher
+    jetbrains.idea-community-bin
+    orca-slicer
+    alrv
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying

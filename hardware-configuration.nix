@@ -5,21 +5,29 @@
 
 {
   imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
+    [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/63fd8d6e-39ee-4724-9302-5a46f85990a7";
+    { device = "/dev/disk/by-uuid/f7c7ea14-0b81-428a-91f5-1361b70d66df";
       fsType = "ext4";
     };
 
+  boot.initrd.luks.devices."luks-fccea2cb-8fa2-41fe-b591-000975986a50".device = "/dev/disk/by-uuid/fccea2cb-8fa2-41fe-b591-000975986a50";
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/63A7-8F30";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
+
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/2ed3d8a7-7c4c-4798-8c9e-2e6211b2b021"; }
+    [ { device = "/dev/disk/by-uuid/123704f1-9602-4b21-ab58-f2ccc4296498"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -27,7 +35,9 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp5s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
