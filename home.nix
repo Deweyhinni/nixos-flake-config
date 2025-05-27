@@ -43,7 +43,7 @@
     prismlauncher
     jetbrains.idea-community-bin
     orca-slicer
-    alrv
+    alvr
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
