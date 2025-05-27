@@ -26,6 +26,8 @@
 
   boot.initrd.luks.devices."luks-14d0c9f6-f237-4c37-95d1-2f0e0a034279".device = "/dev/disk/by-uuid/14d0c9f6-f237-4c37-95d1-2f0e0a034279";
 
+  boot.initrd.kernelModules = [ "amdgpu" ];
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -95,6 +97,7 @@
     gcc
     file
     ghostty
+    pciutils
   ];
 
   services.flatpak.enable = true;

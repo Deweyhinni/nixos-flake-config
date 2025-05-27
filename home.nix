@@ -44,6 +44,10 @@
     jetbrains.idea-community-bin
     orca-slicer
     alvr
+    mpv
+    vlc
+    qbittorrent
+    mission-center
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
