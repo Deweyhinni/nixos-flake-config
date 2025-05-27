@@ -81,8 +81,9 @@
     firefox
     git
     zsh
-    discord
     gcc
+    file
+    ghostty
   ];
 
   services.flatpak.enable = true;

@@ -29,6 +29,21 @@
     gh
     tree
     rustup
+    bat
+    eza
+    gitui
+    freecad
+    blender-hip
+    godot
+    spotify
+    ncspot
+    discord
+    # kicad
+    # jellyfin-media-player
+    # prismlauncher
+    # jetbrains.idea-community-bin
+    # orca-slicer
+    # alrv
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -82,7 +97,7 @@
 
       oh-my-zsh = {
         enable = true;
-        plugins = [ "git" "rust" "vi-mode" "copyfile" ];
+        plugins = [ "git" "rust" "vi-mode" "copyfile" "eza" ];
         theme = "af-magic";
       };
     };
