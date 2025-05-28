@@ -5,7 +5,7 @@
       syntaxHighlighting.enable = true;
 
       shellAliases = {
-        update = "sudo nixos-rebuild switch --flake /home/deweyhinni/nixos-flake-config/#deweyhinni-nixos";
+        update = "nix flake update && sudo nixos-rebuild switch --flake /home/deweyhinni/nixos-flake-config/#deweyhinni-nixos";
       };
 
       oh-my-zsh = {

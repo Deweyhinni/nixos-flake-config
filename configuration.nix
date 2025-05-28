@@ -98,6 +98,8 @@
     file
     ghostty
     pciutils
+    gnumake
+    qemu
   ];
 
   services.flatpak.enable = true;

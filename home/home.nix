@@ -73,6 +73,19 @@
     inputs.nixvim-config.packages.${system}.default
   ];
 
+  xdg.desktopEntries = {
+    firefox-school = {
+      name = "Firefox School";
+      genericName = "Web Browser";
+      exec = "firefox -p School --name firefox-school %U";
+      terminal = false;
+      categories = [ "Application" "Network" "WebBrowser" ];
+      mimeType = [ "text/html" "text/xml" ];
+      icon = "firefox";
+      type = "Application";
+    };
+  };
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
