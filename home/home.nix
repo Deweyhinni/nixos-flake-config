@@ -1,6 +1,11 @@
 { config, pkgs, inputs, system, ... }:
 
 {
+  imports = [
+    ./git.nix
+    ./zsh.nix
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "deweyhinni";
@@ -48,6 +53,8 @@
     vlc
     qbittorrent
     mission-center
+    tuba
+    anki
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -88,31 +95,6 @@
     #   sha256 = "gduD7tZP5TLZ82EPriX58ZWaPtA1D+ozWYZETM+hk+g=";
     # };
   };
-
-  programs = {
-    zsh = {
-      enable = true;
-      autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
-
-      shellAliases = {
-        update = "sudo nixos-rebuild switch --flake /home/deweyhinni/flake/#deweyhinni-nixos";
-      };
-
-      oh-my-zsh = {
-        enable = true;
-        plugins = [ "git" "rust" "vi-mode" "copyfile" "eza" ];
-        theme = "af-magic";
-      };
-    };
-
-    git = {
-      userName = "deweyhinni";
-      userEmail = "deweyhinni@protonmail.com";
-    };
-  };
-
-
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a

@@ -11,5 +11,6 @@
   environment.systemPackages = with pkgs; [
     gnomeExtensions.pop-shell
     gnome-tweaks
+    gnomeExtensions.just-perfection
   ];
 }

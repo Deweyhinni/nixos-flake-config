@@ -31,7 +31,7 @@
 	    home-manager.nixosModules.home-manager {
 	      home-manager.useGlobalPkgs = true;
 	      home-manager.useUserPackages = true;
-              home-manager.users.deweyhinni = import ./home.nix;
+              home-manager.users.deweyhinni = import ./home/home.nix;
 	      home-manager.extraSpecialArgs = {inherit inputs system;};
 	    }
 	    desktopModule
@@ -43,7 +43,7 @@
         deweyhinni-nixos = home-manager.lib.homeManagerConfiguration {
 	  inherit pkgs;
           modules = [
-	    ./home.nix
+	    ./home/home.nix
 	    {
 	      home = {
 	        username = "deweyhinni";
