@@ -13,5 +13,12 @@
         plugins = [ "git" "rust" "vi-mode" "copyfile" "eza" ];
         theme = "af-magic";
       };
+      # initContent = ''
+      #   type starship_zle-keymap-select >/dev/null || \
+      #   {
+      #     echo "Load starship"
+      #     eval "$(starship init zsh)"
+      #   }
+      # '';
     };
 }

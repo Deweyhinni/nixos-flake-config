@@ -100,6 +100,11 @@
     pciutils
     gnumake
     qemu
+    gdb
+    nasm
+    devenv
+    nushell
+    fd
   ];
 
   services.flatpak.enable = true;

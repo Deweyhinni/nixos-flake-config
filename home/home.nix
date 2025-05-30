@@ -4,6 +4,8 @@
   imports = [
     ./git.nix
     ./zsh.nix
+    ./nu.nix
+    ./starship.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -55,6 +57,9 @@
     mission-center
     tuba
     anki
+    starship
+    python3
+    rnote
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
