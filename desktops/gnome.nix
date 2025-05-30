@@ -12,5 +12,11 @@
     gnomeExtensions.pop-shell
     gnome-tweaks
     gnomeExtensions.just-perfection
+    gnomeExtensions.system-monitor
+    gnomeExtensions.blur-my-shell
+    gnomeExtensions.hide-minimized
+    gnomeExtensions.wireless-hid
+    gnomeExtensions.wallpaper-slideshow
+    gnomeExtensions.removable-drive-menu
   ];
 }

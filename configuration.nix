@@ -162,11 +162,11 @@
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
-  };
 
-  nix = {
     package = pkgs.nix;
     settings.experimental-features = [ "nix-command" "flakes" ];
+
+    settings.trusted-users = [ "root" "@wheel" ];
   };
 
   # This value determines the NixOS release from which the default
