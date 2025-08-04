@@ -48,6 +48,7 @@
     kicad
     jellyfin-media-player
     prismlauncher
+    openjdk21
     jetbrains.idea-community-bin
     orca-slicer
     alvr
@@ -61,6 +62,11 @@
     python3
     rnote
     viu
+    haskell.compiler.ghc982
+    intiface-central
+    tokei
+    localsend
+    wgnord
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying

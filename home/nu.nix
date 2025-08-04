@@ -3,6 +3,7 @@
     enable = true;
     shellAliases = {
       rebuild = "nix flake update ; sudo nixos-rebuild switch --flake /home/deweyhinni/nixos-flake-config/#deweyhinni-nixos";
+      nixdev = "nix develop -c $env.SHELL";
     };
     extraConfig = ''
       mkdir ($nu.data-dir | path join "vendor/autoload")

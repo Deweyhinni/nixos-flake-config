@@ -6,6 +6,7 @@
 
       shellAliases = {
         rebuild = "nix flake update && sudo nixos-rebuild switch --flake /home/deweyhinni/nixos-flake-config/#deweyhinni-nixos";
+        nixdev = "nix develop -c $SHELL";
       };
 
       oh-my-zsh = {
