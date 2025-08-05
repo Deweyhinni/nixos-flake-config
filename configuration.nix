@@ -7,7 +7,6 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
     ];
 
   /*
@@ -17,47 +16,12 @@
   boot.loader.grub.useOSProber = true;
   */
 
+  # systemd.user.extraConfig = "DefaultTimeoutStopSec=10s";
+  # systemd.extraConfig = "DefaultTimeoutStopSec=10s";
 
-  boot = {
-
-    # Bootloader.
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
-
-    # Use latest kernel.
-    kernelPackages = pkgs.linuxPackages_latest;
-
-    initrd.luks.devices."luks-14d0c9f6-f237-4c37-95d1-2f0e0a034279".device = "/dev/disk/by-uuid/14d0c9f6-f237-4c37-95d1-2f0e0a034279";
-
-    initrd.kernelModules = [ "amdgpu" ];
-
-    initrd.availableKernelModules = [ "amdgpu" ];
-
-    initrd.systemd.enable = true;
-
-    plymouth = {
-      enable = true;
-      theme = "circle";
-      themePackages = with pkgs; [
-        (adi1090x-plymouth-themes)
-      ];
-    };
-
-    consoleLogLevel = 3;
-    initrd.verbose = false;
-    kernelParams = [
-      "quiet"
-      "splash"
-      "boot.shell_on_fail"
-      "udev.log_priority=3"
-      "rd.systemd.show_status=auto"
-    ];
-
-    loader.timeout = 0;
+  systemd.settings.Manager = {
+    DefaultTimeoutStopSec = "10s";
   };
-
-  systemd.user.extraConfig = "DefaultTimeoutStopSec=10s";
-  systemd.extraConfig = "DefaultTimeoutStopSec=10s";
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -201,7 +165,21 @@
     settings.experimental-features = [ "nix-command" "flakes" ];
 
     settings.trusted-users = [ "root" "@wheel" ];
+
+    settings.substituters = [
+      "https://cache.nixos.org"
+      "https://nix-community.cachix.org"
+    ];
+    settings.trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "cache.nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
   };
+
+    nixpkgs.config.permittedInsecurePackages = [
+      "libsoup-2.74.3"
+    ];
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

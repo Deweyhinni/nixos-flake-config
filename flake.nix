@@ -11,9 +11,12 @@
       url = "github:deweyhinni/nixvim-config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim-config }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixvim-config, nixos-hardware }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -35,24 +38,27 @@
 	      home-manager.extraSpecialArgs = {inherit inputs system;};
 	    }
 	    desktopModule
+	    ./boot/boot-desktop.nix
+	    ./hardware-configs/hardware-config-desktop.nix
 	  ];
 
 	};
-      }; 
-      hmConfig = {
-        deweyhinni-nixos = home-manager.lib.homeManagerConfiguration {
-	  inherit pkgs;
-          modules = [
-	    ./home/home.nix
-	    {
-	      home = {
-	        username = "deweyhinni";
-		homeDirectory = "/home/deweyhinni";
-		stateVersion = "24.11";
-              };
+	deweyhinni-laptop = lib.nixosSystem {
+	  inherit system;
+	  modules = [
+	    ./configuration.nix
+	    home-manager.nixosModules.home-manager {
+	      home-manager.useGlobalPkgs = true;
+	      home-manager.useUserPackages = true;
+              home-manager.users.deweyhinni = import ./home/home.nix;
+	      home-manager.extraSpecialArgs = {inherit inputs system;};
 	    }
+	    ./desktops/gnome.nix
+	    ./boot/boot-laptop.nix
+	    ./hardware-configs/hardware-config-laptop.nix
+	    nixos-hardware.nixosModules.asus-zephyrus-ga401
 	  ];
 	};
-      };
+      }; 
     };
 }

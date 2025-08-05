@@ -50,7 +50,7 @@
     prismlauncher
     openjdk21
     jetbrains.idea-community-bin
-    orca-slicer
+    # orca-slicer
     alvr
     mpv
     vlc
