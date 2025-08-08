@@ -14,9 +14,10 @@
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim-config, nixos-hardware }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixvim-config, nixos-hardware, nix-flatpak }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
