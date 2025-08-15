@@ -5,7 +5,8 @@
       syntaxHighlighting.enable = true;
 
       shellAliases = {
-        rebuild = "nix flake update && sudo nixos-rebuild switch --flake /home/deweyhinni/nixos-flake-config/#deweyhinni-nixos";
+        rebuild = "sudo nixos-rebuild switch --flake /home/deweyhinni/nixos-flake-config/#$NIXOS_CURRENT_CONFIG_NAME";
+        update = "nix flake update";
         nixdev = "nix develop -c $SHELL";
       };
 

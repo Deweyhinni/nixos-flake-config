@@ -32,6 +32,9 @@
         deweyhinni-nixos = lib.nixosSystem {
 	  inherit system;
 	  modules = [ ./configuration.nix
+	    {
+	      environment.variables.NIXOS_CURRENT_CONFIG_NAME = "deweyhinni-nixos";
+	    }
 	    home-manager.nixosModules.home-manager {
 	      home-manager.useGlobalPkgs = true;
 	      home-manager.useUserPackages = true;
@@ -42,12 +45,14 @@
 	    ./boot/boot-desktop.nix
 	    ./hardware-configs/hardware-config-desktop.nix
 	  ];
-
 	};
 	deweyhinni-laptop = lib.nixosSystem {
 	  inherit system;
 	  modules = [
 	    ./configuration.nix
+	    {
+	      environment.variables.NIXOS_CURRENT_CONFIG_NAME = "deweyhinni-laptop";
+	    }
 	    home-manager.nixosModules.home-manager {
 	      home-manager.useGlobalPkgs = true;
 	      home-manager.useUserPackages = true;
