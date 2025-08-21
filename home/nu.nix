@@ -2,8 +2,11 @@
   programs.nushell = {
     enable = true;
     shellAliases = {
-      rebuild = "nix flake update ; sudo nixos-rebuild switch --flake /home/deweyhinni/nixos-flake-config/#deweyhinni-nixos";
+      update = "nix flake update";
+      rebuild = "sudo nixos-rebuild switch --flake /home/deweyhinni/nixos-flake-config/#$env.NIXOS_CURRENT_CONFIG_NAME";
       nixdev = "nix develop -c $env.SHELL";
+      ls = "eza";
+      find = "fd";
     };
     extraConfig = ''
       mkdir ($nu.data-dir | path join "vendor/autoload")
