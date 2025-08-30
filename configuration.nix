@@ -179,6 +179,7 @@
 
     nixpkgs.config.permittedInsecurePackages = [
       "libsoup-2.74.3"
+      "qtwebengine-5.15.19"
     ];
 
 
