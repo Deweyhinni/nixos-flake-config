@@ -34,6 +34,7 @@
 	  modules = [ ./configuration.nix
 	    {
 	      environment.variables.NIXOS_CURRENT_CONFIG_NAME = "deweyhinni-nixos";
+	      networking.hostName = "nixos-desktop";
 	    }
 	    home-manager.nixosModules.home-manager {
 	      home-manager.useGlobalPkgs = true;
@@ -52,6 +53,7 @@
 	    ./configuration.nix
 	    {
 	      environment.variables.NIXOS_CURRENT_CONFIG_NAME = "deweyhinni-laptop";
+	      networking.hostName = "nixos-laptop";
 	    }
 	    home-manager.nixosModules.home-manager {
 	      home-manager.useGlobalPkgs = true;

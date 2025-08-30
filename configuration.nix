@@ -24,7 +24,7 @@
     DefaultTimeoutStopSec = "10s";
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
+  # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -72,7 +72,7 @@
   users.users.deweyhinni = {
     isNormalUser = true;
     description = "deweyhinni";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
     ];
