@@ -7,6 +7,7 @@
     ./nu.nix
     ./starship.nix
     ./flatpak.nix
+    ./hyfetch.nix
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
   ];
 
@@ -33,6 +34,7 @@
 
     htop
     fastfetch
+    hyfetch
     ripgrep
     steam
     gh
