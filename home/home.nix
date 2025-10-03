@@ -50,12 +50,12 @@
     ncspot
     discord
     kicad
-    jellyfin-media-player
+    # jellyfin-media-player
     prismlauncher
     openjdk21
     jetbrains.idea-community-bin
     # orca-slicer
-    alvr
+    # alvr
     mpv
     vlc
     qbittorrent
@@ -66,7 +66,7 @@
     python3
     rnote
     viu
-    haskell.compiler.ghc982
+    haskell.compiler.ghc98
     intiface-central
     tokei
     localsend
@@ -78,6 +78,7 @@
     unzip
     tracy
     fritzing
+    typst
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
