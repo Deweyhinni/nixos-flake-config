@@ -78,6 +78,7 @@
     unzip
     tracy
     fritzing
+    arduino-ide
     typst
 
 

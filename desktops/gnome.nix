@@ -32,6 +32,7 @@
           pop-shell.extensionUuid
           just-perfection.extensionUuid
           hide-minimized.extensionUuid
+          wireless-hid.extensionUuid
         ];
       };
 
