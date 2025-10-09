@@ -53,9 +53,9 @@
     # jellyfin-media-player
     prismlauncher
     openjdk21
-    jetbrains.idea-community-bin
+    # jetbrains.idea-community-bin
     # orca-slicer
-    # alvr
+    alvr
     mpv
     vlc
     qbittorrent
@@ -77,7 +77,7 @@
     zathura
     unzip
     tracy
-    fritzing
+    # fritzing
     arduino-ide
     typst
 
