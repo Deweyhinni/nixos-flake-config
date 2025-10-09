@@ -5,10 +5,8 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./keyboard-input.nix
-    ];
+  imports = [
+  ];
 
   /*
   # Bootloader.

@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 {
+  imports = [
+    ./imports/ibus.nix
+  ];
+
   services = {
     xserver = {
       enable = true;
