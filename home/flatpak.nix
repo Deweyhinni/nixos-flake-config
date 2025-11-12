@@ -6,6 +6,7 @@
       "com.github.geigi.cozy"
       "org.vinegarhq.Sober"
       "dev.geopjr.Collision"
+      "com.opera.Opera"
       {
         appId = "io.github.softfever.OrcaSlicer";
         sha256 = "e11a76d29dafc02bad5e527967b2dcc11b581677747767dd0dd24e679e2ebd41";

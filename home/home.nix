@@ -80,6 +80,7 @@
     # fritzing
     arduino-ide
     typst
+    krita
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
