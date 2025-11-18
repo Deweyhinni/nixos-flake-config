@@ -55,7 +55,7 @@
     openjdk21
     # jetbrains.idea-community-bin
     # orca-slicer
-    alvr
+    # alvr
     mpv
     vlc
     qbittorrent
