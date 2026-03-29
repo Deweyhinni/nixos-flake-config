@@ -43,6 +43,7 @@
 	    home-manager.nixosModules.home-manager {
 	      home-manager.useGlobalPkgs = true;
 	      home-manager.useUserPackages = true;
+	      home-manager.backupFileExtension = "hm-bk";
               home-manager.users.${user} = import ./home/home.nix;
 	      home-manager.extraSpecialArgs = {inherit inputs system user;};
 	    }
@@ -65,6 +66,7 @@
 	    home-manager.nixosModules.home-manager {
 	      home-manager.useGlobalPkgs = true;
 	      home-manager.useUserPackages = true;
+	      home-manager.backupFileExtension = "hm-bk";
               home-manager.users.${user} = import ./home/home.nix;
 	      home-manager.extraSpecialArgs = {inherit inputs system user;};
 	    }

@@ -5,8 +5,13 @@
       user.name = "deweyhinni";
       user.email = "deweyhinni@protonmail.com";
       init.defaultBranch = "main";
-      credential.helper = "!gh auth git-credential";
     };
-    
+  };
+
+  programs.gh = {
+    enable = true;
+    gitCredentialHelper = {
+      enable = true;
+    };
   };
 }
