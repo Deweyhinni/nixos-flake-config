@@ -1,9 +1,10 @@
+{ config, ... }:
 {
   programs.nushell = {
     enable = true;
     shellAliases = {
       update = "nix flake update";
-      rebuild = "sudo nixos-rebuild switch --flake /home/deweyhinni/nixos-flake-config/#$env.NIXOS_CURRENT_CONFIG_NAME";
+      rebuild = "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nixos-flake-config/#$env.NIXOS_CURRENT_CONFIG_NAME";
       nixdev = "nix develop -c $env.SHELL";
       ls = "eza";
       find = "fd";

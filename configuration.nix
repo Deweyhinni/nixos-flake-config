@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, user, ... }:
 
 {
   imports = [
@@ -72,9 +72,9 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.deweyhinni = {
+  users.users.${user} = {
     isNormalUser = true;
-    description = "deweyhinni";
+    description = "Frey";
     extraGroups = [ "networkmanager" "wheel" "dialout" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
@@ -104,6 +104,7 @@
     devenv
     nushell
     fd
+    rename
   ];
 
   services.flatpak.enable = true;

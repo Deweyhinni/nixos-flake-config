@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, system, ... }:
+{ config, pkgs, inputs, system, user, ... }:
 
 {
   imports = [
@@ -13,8 +13,8 @@
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "deweyhinni";
-  home.homeDirectory = "/home/deweyhinni";
+  home.username = "${user}";
+  home.homeDirectory = "/home/${user}";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -28,10 +28,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
     htop
     fastfetch
     hyfetch
@@ -44,18 +40,18 @@
     eza
     gitui
     freecad
-    blender-hip
+    blender
     godot
     spotify
     ncspot
     discord
     kicad
-    # jellyfin-media-player
+    jellyfin-media-player
     prismlauncher
     openjdk21
-    # jetbrains.idea-community-bin
-    # orca-slicer
-    # alvr
+    jetbrains.idea-oss
+    orca-slicer
+    alvr
     mpv
     vlc
     qbittorrent
@@ -81,6 +77,7 @@
     arduino-ide
     typst
     krita
+    logisim-evolution
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -125,14 +122,6 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-
-    # doesn't really work since mason breaks on nixos lmao
-    # ".config/nvim".source = pkgs.fetchFromGitHub {
-    #   owner = "deweyhinni";
-    #   repo = "kickstart.nvim";
-    #   rev = "e053129";
-    #   sha256 = "gduD7tZP5TLZ82EPriX58ZWaPtA1D+ozWYZETM+hk+g=";
-    # };
   };
 
   # Home Manager can also manage your environment variables through

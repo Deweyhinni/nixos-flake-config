@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, user, ... }:
 {
   imports = [
-    ./imports/ibus.nix
+    ./input/ibus.nix
   ];
 
   services = {
@@ -25,7 +25,7 @@
     dconf-editor
   ];
 
-  home-manager.users.deweyhinni = {
+  home-manager.users.${user} = {
     dconf = {
       enable = true;
       settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";

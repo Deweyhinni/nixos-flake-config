@@ -1,4 +1,4 @@
-{config, pkgs, lib, ...}:
+{config, pkgs, lib, user, ...}:
 {
   environment.systemPackages = with pkgs; [
     grim
@@ -21,7 +21,7 @@
     settings = {
       default_session = {
         command = "sway";
-        user = "deweyhinni";
+        user = "${user}";
       };
     };
   };

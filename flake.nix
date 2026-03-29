@@ -20,6 +20,7 @@
   outputs = { self, nixpkgs, home-manager, nixvim-config, nixos-hardware, nix-flatpak }@inputs:
     let
       system = "x86_64-linux";
+      user = "frey";
       pkgs = import nixpkgs {
         inherit system;
 	config.allowUnfree = true;
@@ -29,37 +30,43 @@
       desktopModule = import ./desktops/${desktopEnvironment}.nix;
     in {
       nixosConfigurations = {
-        deweyhinni-nixos = lib.nixosSystem {
+        frey-nixos = lib.nixosSystem {
 	  inherit system;
+	  specialArgs = {
+            inherit user inputs system; 
+	  };
 	  modules = [ ./configuration.nix
 	    {
-	      environment.variables.NIXOS_CURRENT_CONFIG_NAME = "deweyhinni-nixos";
+	      environment.variables.NIXOS_CURRENT_CONFIG_NAME = "frey-nixos";
 	      networking.hostName = "nixos-desktop";
 	    }
 	    home-manager.nixosModules.home-manager {
 	      home-manager.useGlobalPkgs = true;
 	      home-manager.useUserPackages = true;
-              home-manager.users.deweyhinni = import ./home/home.nix;
-	      home-manager.extraSpecialArgs = {inherit inputs system;};
+              home-manager.users.${user} = import ./home/home.nix;
+	      home-manager.extraSpecialArgs = {inherit inputs system user;};
 	    }
 	    desktopModule
 	    ./boot/boot-desktop.nix
-	    ./hardware-configs/hardware-config-desktop.nix
+	    ./hardware-configs/hardware-config-desktop-2.nix
 	  ];
 	};
-	deweyhinni-laptop = lib.nixosSystem {
+	frey-laptop = lib.nixosSystem {
 	  inherit system;
+	  specialArgs = {
+	    inherit user inputs system;
+	  };
 	  modules = [
 	    ./configuration.nix
 	    {
-	      environment.variables.NIXOS_CURRENT_CONFIG_NAME = "deweyhinni-laptop";
+	      environment.variables.NIXOS_CURRENT_CONFIG_NAME = "frey-laptop";
 	      networking.hostName = "nixos-laptop";
 	    }
 	    home-manager.nixosModules.home-manager {
 	      home-manager.useGlobalPkgs = true;
 	      home-manager.useUserPackages = true;
-              home-manager.users.deweyhinni = import ./home/home.nix;
-	      home-manager.extraSpecialArgs = {inherit inputs system;};
+              home-manager.users.${user} = import ./home/home.nix;
+	      home-manager.extraSpecialArgs = {inherit inputs system user;};
 	    }
 	    ./desktops/gnome.nix
 	    ./boot/boot-laptop.nix
