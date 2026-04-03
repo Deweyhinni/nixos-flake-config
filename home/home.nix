@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, system, user, ... }:
+{ config, pkgs, inputs, system, user, desktop, ... }:
 
 {
   imports = [
@@ -8,6 +8,7 @@
     ./starship.nix
     ./flatpak.nix
     ./hyfetch.nix
+    ./desktops/${desktop}.nix
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
   ];
 
@@ -96,13 +97,15 @@
     inputs.nixvim-config.packages.${system}.default
   ];
 
+  xdg.enable = true;
+
   xdg.desktopEntries = {
     firefox-school = {
       name = "Firefox School";
       genericName = "Web Browser";
       exec = "firefox -p School --name firefox-school %U";
       terminal = false;
-      categories = [ "Application" "Network" "WebBrowser" ];
+      categories = [ "Network" "WebBrowser" ];
       mimeType = [ "text/html" "text/xml" ];
       icon = "firefox";
       type = "Application";

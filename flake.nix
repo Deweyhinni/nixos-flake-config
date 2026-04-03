@@ -26,14 +26,15 @@
 	config.allowUnfree = true;
       };
       lib = nixpkgs.lib;
-      desktopEnvironment = "cosmic";
-      desktopModule = import ./desktops/${desktopEnvironment}.nix;
+      desktop = "sway";
+      desktopLap = "gnome";
+      desktopModule = import ./desktops/${desktop}.nix;
     in {
       nixosConfigurations = {
         frey-nixos = lib.nixosSystem {
 	  inherit system;
 	  specialArgs = {
-            inherit user inputs system; 
+            inherit user desktop inputs system; 
 	  };
 	  modules = [ ./configuration.nix
 	    {
@@ -45,7 +46,7 @@
 	      home-manager.useUserPackages = true;
 	      home-manager.backupFileExtension = "hm-bk";
               home-manager.users.${user} = import ./home/home.nix;
-	      home-manager.extraSpecialArgs = {inherit inputs system user;};
+	      home-manager.extraSpecialArgs = {inherit inputs system user desktop;};
 	    }
 	    desktopModule
 	    ./boot/boot-desktop.nix
@@ -56,6 +57,7 @@
 	  inherit system;
 	  specialArgs = {
 	    inherit user inputs system;
+	    desktop = desktopLap;
 	  };
 	  modules = [
 	    ./configuration.nix
@@ -68,7 +70,7 @@
 	      home-manager.useUserPackages = true;
 	      home-manager.backupFileExtension = "hm-bk";
               home-manager.users.${user} = import ./home/home.nix;
-	      home-manager.extraSpecialArgs = {inherit inputs system user;};
+	      home-manager.extraSpecialArgs = {inherit inputs system user; desktop = desktopLap;};
 	    }
 	    ./desktops/gnome.nix
 	    ./boot/boot-laptop.nix

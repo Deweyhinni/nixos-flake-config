@@ -5,11 +5,8 @@
   ];
 
   services = {
-    xserver = {
-      enable = true;
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
-    };
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -61,6 +58,7 @@
           switch-to-workspace-down = ["<Control><Super>j"];
           switch-to-workspace-up = ["<Control><Super>k"];
 
+          minimize = [];
           close = ["<Super>q"];
         };
         "org/gnome/shell/keybindings" = {

@@ -10,6 +10,7 @@
         update = "nix flake update";
         nixdev = "nix develop -c $SHELL";
         find = "fd";
+        bt = "bluetuith";
       };
 
       oh-my-zsh = {

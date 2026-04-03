@@ -3,26 +3,50 @@
   environment.systemPackages = with pkgs; [
     grim
     slurp
+    sway-contrib.grimshot
     wl-clipboard
     mako
     waybar
-
+    wofi
+    bluetuith
+    pwvucontrol
+    playerctl
+    swaybg
+    nautilus
+    loupe
   ];
 
   services.gnome.gnome-keyring.enable = true;
 
   programs.sway = {
     enable = true;
+    package = pkgs.swayfx;
     wrapperFeatures.gtk = true;
   };
 
-  services.greetd = {
+  xdg.portal = {
     enable = true;
-    settings = {
-      default_session = {
-        command = "sway";
-        user = "${user}";
-      };
-    };
+    wlr.enable = true;
+  };
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+  };
+
+  # services.greetd = {
+  #   enable = true;
+  #   settings = {
+  #     default_session = {
+  #       command = "sway";
+  #       user = "${user}";
+  #     };
+  #   };
+  # };
+
+  programs.regreet.enable = true;
+  security.pam.services = {
+    regreet.enableGnomeKeyring = true;
   };
 }

@@ -71,6 +71,10 @@
     pulse.enable = true;
   };
 
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
     isNormalUser = true;
@@ -110,6 +114,7 @@
   services.flatpak.enable = true;
 
   fonts.packages = with pkgs; [
+    font-awesome_4
     nerd-fonts.fira-code
     nerd-fonts.envy-code-r
     noto-fonts
@@ -146,6 +151,8 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  security.polkit.enable = true;
 
   # Enable cosmic desktop
   # services = {

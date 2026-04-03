@@ -8,6 +8,7 @@
       nixdev = "nix develop -c $env.SHELL";
       ls = "eza";
       find = "fd";
+      bt = "bluetuith";
     };
     extraConfig = ''
       mkdir ($nu.data-dir | path join "vendor/autoload")

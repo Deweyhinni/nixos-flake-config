@@ -20,15 +20,17 @@
 
   boot.initrd.luks.devices."luks-0ea5fee4-44a8-478e-b412-c2cfcb82d8d7".device = "/dev/disk/by-uuid/0ea5fee4-44a8-478e-b412-c2cfcb82d8d7";
 
+  boot.initrd.luks.devices."luks-eed7b2e8-1aa2-4ebd-be64-f30def158418".device = "/dev/disk/by-uuid/eed7b2e8-1aa2-4ebd-be64-f30def158418";
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/D77E-3009";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  swapDevices =
-    [ { device = "/dev/mapper/luks-eed7b2e8-1aa2-4ebd-be64-f30def158418"; }
-    ];
+  swapDevices =[{
+      device = "/dev/mapper/luks-eed7b2e8-1aa2-4ebd-be64-f30def158418";
+  }];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
