@@ -14,6 +14,7 @@
     swaybg
     nautilus
     loupe
+    # networkmanagerapplet
   ];
 
   services.gnome.gnome-keyring.enable = true;
@@ -48,5 +49,12 @@
   programs.regreet.enable = true;
   security.pam.services = {
     regreet.enableGnomeKeyring = true;
+  };
+
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    MOZ_ENABLE_WAYLAND = "1";
+    QT_QPA_PLATFORM = "wayland";
+    SDL_VIDEODRIVER = "wayland";
   };
 }

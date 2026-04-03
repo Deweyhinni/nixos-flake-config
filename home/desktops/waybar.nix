@@ -1,5 +1,7 @@
 { config, ...}:
-{
+let
+  powerMenu = ./waybar/power_menu.xml;
+in {
   programs.waybar = {
     enable = true;
     settings = {
@@ -17,7 +19,7 @@
           "memory"
           "tray"
           "clock"
-          "custom/lock"
+          "custom/power"
         ];
 
         "sway/workspaces" = {
@@ -66,6 +68,19 @@
           on-click = "sh -c '(sleep 0.5s; swaylock --grace 0)' & disown";
           format = "";
         };
+
+        "custom/power" = {
+          format = "⏻";
+          tooltip = false;
+          menu = "on-click";
+          menu-file = "${powerMenu}";
+          menu-actions = {
+            shutdown = "shutdown";
+            reboot = "reboot";
+            suspend = "systemctl suspend";
+            hibernate = "systemctl hibernate";
+          };
+        };
       };
     };
 
@@ -100,19 +115,18 @@
       * {
         font-family: FantasqueSansMono Nerd Font;
         font-size: 14px;
-        margin-top: 2px;
         min-height: 0;
       }
 
       #waybar {
         background: transparent;
         color: @text;
-        margin: 3px 3px;
+        margin: 3px 3px 1px 3px;
       }
 
       #workspaces {
         border-radius: 1rem;
-        margin: 3px;
+        margin: 5px;
         background-color: @surface0;
         margin-left: 0.4rem;
       }
@@ -154,8 +168,6 @@
 
       #clock {
         color: @blue;
-        border-radius: 0px 1rem 1rem 0px;
-        margin-right: 1rem;
       }
 
       #battery {
@@ -191,7 +203,7 @@
 
       #custom-lock {
           border-radius: 1rem 1rem 1rem 1rem;
-          margin-right: 3px;
+          margin-right: 0.4rem;
           color: @lavender;
       }
 
