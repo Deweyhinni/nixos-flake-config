@@ -15,7 +15,7 @@ in {
     config = rec {
       modifier = "Mod4";
       terminal = "ghostty";
-      menu = "wofi --show run";
+      menu = "wofi --show drun";
       bars = [{
         command = "waybar";
       }];
@@ -61,6 +61,7 @@ in {
 
       gaps inner 3
       gaps outer 3
+      gaps top 0
 
       # target                 title     bg    text   indicator  border
       client.focused           $lavender $base $text  $rosewater $pink
@@ -76,10 +77,19 @@ in {
       blur_radius 7
       blur_passes 2
 
+      layer_effects "waybar" {
+        blur enable;
+        blur_xray enable;
+        blur_ignore_transparent enable;
+        shadows enable;
+      }
+
       bindsym Mod4+Ctrl+h workspace prev
       bindsym Mod4+Ctrl+l workspace next
       bindsym Mod4+Ctrl+Shift+h move container to workspace prev; workspace prev
       bindsym Mod4+Ctrl+Shift+l move container to workspace next; workspace next
+
+      bindsym Mod4+Escape exec swaylock
 
       bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
       bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
@@ -87,5 +97,42 @@ in {
       bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
       bindsym XF86AudioPlay exec playerctl play-pause
     '';
+  };
+
+  programs.swaylock = {
+    enable = true;
+    settings = {
+      indicator-idle-visible=true;
+
+      color="303447";
+      bs-hl-color="f3d5cf";
+      caps-lock-bs-hl-color="f3d5cf";
+      caps-lock-key-hl-color="a7d189";
+      inside-color="303447";
+      inside-clear-color="303447";
+      inside-caps-lock-color="303447";
+      inside-ver-color="303447";
+      inside-wrong-color="303447";
+      key-hl-color="a7d189";
+      layout-bg-color="00000001";
+      layout-border-color="00000001";
+      layout-text-color="c7d0f5";
+      line-color="00000001";
+      line-clear-color="00000001";
+      line-caps-lock-color="00000001";
+      line-ver-color="00000001";
+      line-wrong-color="00000001";
+      ring-color="414560";
+      ring-clear-color="f3d5cf";
+      ring-caps-lock-color="ef10f76";
+      ring-ver-color="9caaee";
+      ring-wrong-color="ea1000c";
+      separator-color="00000001";
+      text-color="c7d0f5";
+      text-clear-color="f3d5cf";
+      text-caps-lock-color="ef10f76";
+      text-ver-color="9caaee";
+      text-wrong-color="ea1000c";
+    };
   };
 }

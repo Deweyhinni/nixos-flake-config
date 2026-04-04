@@ -8,6 +8,7 @@
     ./starship.nix
     ./flatpak.nix
     ./hyfetch.nix
+    ./ghostty.nix
     ./desktops/${desktop}.nix
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
   ];
@@ -79,6 +80,7 @@
     typst
     krita
     logisim-evolution
+    alacritty
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying

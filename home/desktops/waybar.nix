@@ -31,6 +31,10 @@ in {
           };
         };
 
+        "sway/language" = {
+          on-click = ''swaymsg input "type:keyboard" xkb_switch_layout next'';
+        };
+
         tray = {
           icon-size = 21;
           spacing = 10;
@@ -65,7 +69,7 @@ in {
 
         "custom/lock" = {
           tooltip = false;
-          on-click = "sh -c '(sleep 0.5s; swaylock --grace 0)' & disown";
+          on-click = "swaylock";
           format = "";
         };
 
@@ -114,12 +118,12 @@ in {
 
       * {
         font-family: FantasqueSansMono Nerd Font;
-        font-size: 14px;
+        font-size: 16px;
         min-height: 0;
       }
 
       #waybar {
-        background: transparent;
+        background: alpha(@crust, 0.4);
         color: @text;
         margin: 3px 3px 1px 3px;
       }
@@ -159,10 +163,9 @@ in {
       #clock,
       #battery,
       #pulseaudio,
-      #custom-lock,
       #custom-power {
         background-color: @surface0;
-        padding: 0.5rem 1rem;
+        padding: 0.2rem 1rem;
         margin: 5px 0;
       }
 
@@ -202,9 +205,10 @@ in {
       }
 
       #custom-lock {
-          border-radius: 1rem 1rem 1rem 1rem;
-          margin-right: 0.4rem;
           color: @lavender;
+          padding: 0.2rem 1rem;
+          background-color: @surface0;
+          margin: 5px 0;
       }
 
       #custom-power {
