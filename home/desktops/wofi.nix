@@ -2,6 +2,12 @@
 {
   programs.wofi = {
     enable = true;
+
+    settings = {
+      key_up = "Ctrl-p";
+      key_down = "Ctrl-n";
+    };
+
     style = ''
       @define-color	rosewater  #f2d5cf;
       @define-color	rosewater-rgb  rgb(242, 213, 207);

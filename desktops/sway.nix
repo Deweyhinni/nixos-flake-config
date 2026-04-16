@@ -12,8 +12,10 @@
     pwvucontrol
     playerctl
     swaybg
+    swayidle
     nautilus
     loupe
+    catppuccin-gtk
     # networkmanagerapplet
   ];
 
@@ -46,7 +48,14 @@
   #   };
   # };
 
-  programs.regreet.enable = true;
+  programs.regreet = {
+    enable = true;
+    theme = {
+      name = "catppuccin-frappe-blue-standard";
+      package = pkgs.catppuccin-gtk;
+    };
+  };
+
   security.pam.services = {
     regreet.enableGnomeKeyring = true;
   };

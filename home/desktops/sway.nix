@@ -5,6 +5,7 @@ in {
   imports = [
     ./waybar.nix
     ./wofi.nix
+    ./swayidle.nix
   ];
 
   wayland.windowManager.sway = {
@@ -91,6 +92,9 @@ in {
 
       bindsym Mod4+Escape exec swaylock
 
+      bindsym Print exec grimshot save output
+      bindsym Shift+Print exec grimshot save area
+
       bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
       bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
       bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
@@ -135,4 +139,20 @@ in {
       text-wrong-color="ea1000c";
     };
   };
+
+  services.mako = {
+    enable = true;
+    settings = {
+      anchor="top-center";
+      background-color="#303446";
+      text-color="#c6d0f5";
+      border-color="#f4b8e4";
+      progress-color="over #414559";
+      border-radius = 3;
+      "urgency=high" = {
+        border-color="#ef9f76";
+      };
+    };
+  };
+
 }

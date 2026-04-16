@@ -79,8 +79,8 @@ in {
           menu = "on-click";
           menu-file = "${powerMenu}";
           menu-actions = {
-            shutdown = "shutdown";
-            reboot = "reboot";
+            shutdown = "shutdown now";
+            reboot = "reboot now";
             suspend = "systemctl suspend";
             hibernate = "systemctl hibernate";
           };
