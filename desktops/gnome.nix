@@ -22,7 +22,12 @@
     dconf-editor
   ];
 
-  home-manager.users.${user} = {
+  programs.dconf.enable = true;
+
+  home-manager.users.${user} = {lib, ...}: 
+  let
+    inherit (lib.hm.gvariant) mkUint32;
+  in {
     dconf = {
       enable = true;
       settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
@@ -61,6 +66,7 @@
           minimize = [];
           close = ["<Super>q"];
         };
+
         "org/gnome/shell/keybindings" = {
           switch-to-application-1 = [];
           switch-to-application-2 = [];
@@ -73,8 +79,25 @@
           switch-to-application-9 = [];
           toggle-overview = ["<Super>w"];
         };
+
+        "org/gnome/shell/extensions/pop-shell" = {
+          tile-by-default = true;
+          gap-inner = mkUint32 0;
+          gap-outer = mkUint32 0;
+          active-hint = true;
+          active-hint-border-radius = mkUint32 1;
+          hint-color-rgba = "rgba(234, 118, 203, 0.6)";
+          tile-enter = ["<Super>t"];
+        };
+
         "org/gnome/settings-daemon/plugins/media-keys" = {
           screensaver = ["<Super>Escape"];
+          custom-keybindings = ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"];
+        };
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+          binding = "<Super>Return";
+          command = "ghostty";
+          name = "terminal";
         };
         "org/gnome/desktop/input-sources" = {
           xkb-options = ["caps:escape_shifted_capslock"];

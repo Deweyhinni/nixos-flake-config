@@ -21,6 +21,7 @@
     let
       system = "x86_64-linux";
       user = "frey";
+      userLap = "deweyhinni";
       pkgs = import nixpkgs {
         inherit system;
 	config.allowUnfree = true;
@@ -56,7 +57,8 @@
 	frey-laptop = lib.nixosSystem {
 	  inherit system;
 	  specialArgs = {
-	    inherit user inputs system;
+	    inherit inputs system;
+	    user = userLap;
 	    desktop = desktopLap;
 	  };
 	  modules = [
@@ -69,8 +71,8 @@
 	      home-manager.useGlobalPkgs = true;
 	      home-manager.useUserPackages = true;
 	      home-manager.backupFileExtension = "hm-bk";
-              home-manager.users.${user} = import ./home/home.nix;
-	      home-manager.extraSpecialArgs = {inherit inputs system user; desktop = desktopLap;};
+              home-manager.users.${userLap} = import ./home/home.nix;
+	      home-manager.extraSpecialArgs = {inherit inputs system; desktop = desktopLap; user=userLap;};
 	    }
 	    ./desktops/gnome.nix
 	    ./boot/boot-laptop.nix

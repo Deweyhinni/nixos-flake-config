@@ -78,6 +78,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
     isNormalUser = true;
+    uid = 1000;
     description = "Frey";
     extraGroups = [ "networkmanager" "wheel" "dialout" ];
     shell = pkgs.zsh;
