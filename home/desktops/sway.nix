@@ -92,8 +92,8 @@ in {
 
       bindsym Mod4+Escape exec swaylock
 
-      bindsym Print exec grimshot save output
-      bindsym Shift+Print exec grimshot save area
+      bindsym Print exec grimshot savecopy output
+      bindsym Shift+Print exec grimshot savecopy area
 
       bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
       bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
