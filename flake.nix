@@ -77,6 +77,7 @@
 	    ./desktops/gnome.nix
 	    ./boot/boot-laptop.nix
 	    ./hardware-configs/hardware-config-laptop.nix
+	    ./laptop-config.nix
 	    nixos-hardware.nixosModules.asus-zephyrus-ga401
 	  ];
 	};
