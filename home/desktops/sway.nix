@@ -152,6 +152,7 @@ in {
       "urgency=high" = {
         border-color="#ef9f76";
       };
+      default-timeout = 5000;
     };
   };
 
