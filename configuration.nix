@@ -71,6 +71,13 @@
     pulse.enable = true;
   };
 
+  services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
@@ -80,7 +87,7 @@
     isNormalUser = true;
     uid = 1000;
     description = "Frey";
-    extraGroups = [ "networkmanager" "wheel" "dialout" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" "podman" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
     ];
@@ -145,6 +152,49 @@
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
     };
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        stdenv.cc.cc.lib
+        libGL
+        fontconfig
+        xorg.libX11
+        libxkbcommon
+        zlib
+        freetype
+        dbus
+        wayland
+        fuse
+        xorg.xcbutilwm
+        glib
+        gcc
+        gcc-unwrapped
+        # android simulator
+        libpulseaudio
+        glibc
+        nss
+        nspr
+        expat
+        xorg.libXcomposite
+        xorg.libXcursor
+        xorg.libXdamage
+        xorg.libXext
+        xorg.libXfixes
+        xorg.libXi
+        xorg.libXrender
+        xorg.libXtst
+        xorg.libxcb.dev
+        alsa-lib
+        libglvnd
+        zstd
+      ];
+    };
+  };
+
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    defaultNetwork.settings = { dns_enabled = true; };
   };
 
 
