@@ -5,15 +5,9 @@ let
 in {
   services.swayidle = {
     enable = true;
-    events = [
-      {
-        event = "before-sleep";
-        command = (display "off") + "; " + lock;
-      }
-      {
-        event = "after-resume";
-        command = display "on";
-      }
-    ];
+    events = {
+      before-sleep = (display "off") + "; " + lock;
+      after-resume = display "on";
+    };
   };
 }

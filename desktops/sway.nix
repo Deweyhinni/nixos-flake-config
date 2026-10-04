@@ -48,13 +48,15 @@
   #   };
   # };
 
-  programs.regreet = {
+  services.displayManager.regreet = {
     enable = true;
     theme = {
       name = "catppuccin-frappe-blue-standard";
       package = pkgs.catppuccin-gtk;
     };
   };
+  # programs.regreet = {
+  # };
 
   security.pam.services = {
     regreet.enableGnomeKeyring = true;

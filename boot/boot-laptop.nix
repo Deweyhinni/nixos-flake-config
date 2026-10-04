@@ -19,6 +19,8 @@
 
     initrd.systemd.enable = true;
 
+    kernel.sysctl."kernel.yama.ptrace_scope" = 0;
+
     plymouth = {
       enable = true;
       theme = "circle";

@@ -152,20 +152,23 @@
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
     };
+    wireshark = {
+      enable = true;
+    };
     nix-ld = {
       enable = true;
       libraries = with pkgs; [
         stdenv.cc.cc.lib
         libGL
         fontconfig
-        xorg.libX11
+        libx11
         libxkbcommon
         zlib
         freetype
         dbus
         wayland
         fuse
-        xorg.xcbutilwm
+        libxcb-wm
         glib
         gcc
         gcc-unwrapped
@@ -175,15 +178,15 @@
         nss
         nspr
         expat
-        xorg.libXcomposite
-        xorg.libXcursor
-        xorg.libXdamage
-        xorg.libXext
-        xorg.libXfixes
-        xorg.libXi
-        xorg.libXrender
-        xorg.libXtst
-        xorg.libxcb.dev
+        libxcomposite
+        libxcursor
+        libxdamage
+        libxext
+        libxfixes
+        libxi
+        libxrender
+        libxtst
+        libxcb.dev
         alsa-lib
         libglvnd
         zstd
