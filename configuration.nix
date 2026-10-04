@@ -117,6 +117,15 @@
     nushell
     fd
     rename
+    jq
+    fzf
+    fd
+    xxd
+    wireguard-tools
+    openvpn
+    hexyl
+    appimage-run
+    comma
   ];
 
   services.flatpak.enable = true;
