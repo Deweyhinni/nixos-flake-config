@@ -81,6 +81,7 @@
     krita
     logisim-evolution
     alacritty
+    gnome-calculator
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
