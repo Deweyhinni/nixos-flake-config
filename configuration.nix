@@ -169,6 +169,7 @@
       libraries = with pkgs; [
         stdenv.cc.cc.lib
         libGL
+        libffi
         fontconfig
         libx11
         libxkbcommon
